@@ -1,0 +1,50 @@
+name: Publish to npm
+# Publishes via npm Trusted Publishing (OIDC) — no npm token stored anywhere.
+# One-time setup by the repo owner on npmjs.com:
+#   npm package "ghostguard-plan" (created by a first manual publish) ->
+#   Settings -> Trusted Publisher -> GitHub Actions ->
+#   owner: littlestjames82-sys, repo: ghostguard-plan, workflow: publish-npm.yml,
+#   environment: npm
+# Until that publisher exists, run this workflow only in "dry" mode: it packs
+# and verifies the tarball without publishing. (The workflow run attached to
+# the first GitHub release is EXPECTED to fail at the publish step for this
+# reason — the package does not exist on npm yet.)
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "Pack only, do not publish"
+        type: boolean
+        default: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ghostguard-plan
+      - uses: actions/checkout@v4
+        with:
+          repository: littlestjames82-sys/ghostguard
+          path: ghostguard
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest
+      - name: Test (against the sibling core checkout)
+        working-directory: ghostguard-plan
+        run: npm test
+      - name: Pack (always — this is the verification)
+        working-directory: ghostguard-plan
+        run: npm pack --dry-run
+      - name: Publish (release events, or manual with dry=false)
+        if: github.event_name == 'release' || inputs.dry == false
+        working-directory: ghostguard-plan
+        run: npm publish --provenance --access public

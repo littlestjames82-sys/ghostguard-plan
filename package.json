@@ -1,0 +1,30 @@
+{
+  "description": "GhostGuard Plan Approval + Separation of Duties prototype \u2014 dry-run plans, hash-bound approvals, quorum for large spends. By Ghost Developer Studio.",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "main": "./src/planner.mjs",
+  "name": "ghostguard-plan",
+  "private": false,
+  "scripts": {
+    "demo": "node examples/demo.mjs",
+    "test": "node test/run-tests.mjs",
+    "verify": "node test/run-tests.mjs"
+  },
+  "type": "module",
+  "version": "0.1.0",
+  "author": "Ghost Developer Studio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/littlestjames82-sys/ghostguard-plan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/littlestjames82-sys/ghostguard-plan/issues"
+  },
+  "homepage": "https://github.com/littlestjames82-sys/ghostguard-plan#readme",
+  "files": [
+    "src",
+    "examples"
+  ]
+}
