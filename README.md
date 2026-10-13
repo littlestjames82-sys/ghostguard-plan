@@ -3,8 +3,9 @@
 **Ideas #6 (Plan Approval / dry-run twin) and #7 (Separation of Duties /
 quorum approvals) from the GhostGuard more-ideas list, as one standalone
 prototype.** By Ghost Developer Studio. Public prototype — v0.1.0 —
-Node ESM, zero runtime dependencies, built on the real GhostGuard engine
-(imported from `../ghostguard/dist`, which this package never modifies).
+Node ESM, built on the real GhostGuard engine
+(imported from the published `ghostguard` package — this package's only
+runtime dependency — which it never modifies).
 
 ## The problem it solves
 
@@ -163,17 +164,13 @@ npm run demo     # plan -> self-approval rejected -> quorum -> execute
 
 ## Repository layout note
 
-This add-on imports the GhostGuard core engine from a **sibling checkout**:
-`../../ghostguard/dist/index.js` (its source and/or tests do; nothing in the
-core is modified). To run it, clone the core next to this repo so both folders
-share a parent directory:
+This add-on imports the GhostGuard core engine from the **published
+`ghostguard` package** (`"ghostguard": "^0.1.0"` in `package.json`; nothing
+in the core is modified). To run it, clone this repo and install:
 
 ```sh
-git clone https://github.com/littlestjames82-sys/ghostguard
 git clone https://github.com/littlestjames82-sys/ghostguard-plan
-# build the core once so dist/ exists:
-cd ghostguard && npm run build && cd ..
-cd ghostguard-plan && npm test
+cd ghostguard-plan && npm install && npm test
 ```
 
 Part of the GhostGuard family by **Ghost Developer Studio**.

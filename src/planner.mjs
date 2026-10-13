@@ -4,7 +4,7 @@ import {
   evaluatePolicy,
   gatewayRecordFromDecision,
   createJsonlRecorder,
-} from "../../ghostguard/dist/index.js";
+} from "ghostguard";
 import { actionHash, planHash } from "./hash.mjs";
 import { appendApprovalEntry, readApprovalEntries, validApprovals } from "./approvals.mjs";
 

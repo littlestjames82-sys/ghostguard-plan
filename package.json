@@ -1,5 +1,8 @@
 {
   "description": "GhostGuard Plan Approval + Separation of Duties prototype \u2014 dry-run plans, hash-bound approvals, quorum for large spends. By Ghost Developer Studio.",
+  "dependencies": {
+    "ghostguard": "^0.1.0"
+  },
   "engines": {
     "node": ">=18.0.0"
   },

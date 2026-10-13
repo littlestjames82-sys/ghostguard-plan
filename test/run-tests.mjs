@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { readGatewayRecords } from "../../ghostguard/dist/index.js";
+import { readGatewayRecords } from "ghostguard";
 import { createPlanner, examplePolicyDoc } from "../src/planner.mjs";
 
 let passed = 0;
