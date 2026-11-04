@@ -1,4 +1,5 @@
 # GhostGuard Plan Approval + Separation of Duties
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/littlestjames82-sys/ghostguard-plan)](https://github.com/littlestjames82-sys/ghostguard-plan/releases)
 
 **Ideas #6 (Plan Approval / dry-run twin) and #7 (Separation of Duties /
 quorum approvals) from the GhostGuard more-ideas list, as one standalone
