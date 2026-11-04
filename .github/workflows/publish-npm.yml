@@ -26,10 +26,10 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: ghostguard-plan
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: littlestjames82-sys/ghostguard
           path: ghostguard
